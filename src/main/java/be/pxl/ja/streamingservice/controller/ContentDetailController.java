@@ -2,7 +2,6 @@ package be.pxl.ja.streamingservice.controller;
 
 import be.pxl.ja.streamingservice.model.Content;
 import be.pxl.ja.streamingservice.model.Movie;
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -1,11 +1,6 @@
 package be.pxl.ja.streamingservice;
 
-import be.pxl.ja.streamingservice.model.Account;
-import be.pxl.ja.streamingservice.model.Content;
-import be.pxl.ja.streamingservice.model.Documentary;
-import be.pxl.ja.streamingservice.model.Movie;
-import be.pxl.ja.streamingservice.model.Rating;
-import be.pxl.ja.streamingservice.model.TVShow;
+import be.pxl.ja.streamingservice.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

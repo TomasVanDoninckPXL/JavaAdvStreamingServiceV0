@@ -106,7 +106,7 @@ public class RegistrationController implements Initializable {
 
 	public void onRegister(ActionEvent actionEvent) {
 		PaymentInfo paymentInfo = new PaymentInfo();
-		paymentInfo.setCardNumer(cardnumberTextField.getText());
+		paymentInfo.setCardNumber(cardnumberTextField.getText());
 		paymentInfo.setExpirationDate(expirationDatePicker.getValue());
 		paymentInfo.setFirstName(firstnameTextField.getText());
 		paymentInfo.setLastName(lastnameTextField.getText());
