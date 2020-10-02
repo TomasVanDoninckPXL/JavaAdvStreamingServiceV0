@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 public class LoginController  implements Initializable {
@@ -43,7 +44,7 @@ public class LoginController  implements Initializable {
 	}
 
 	@FXML
-	public void handleButtonAction(MouseEvent event) {
+	public void handleButtonAction(MouseEvent event) throws NoSuchAlgorithmException {
 
 		if (event.getSource() == signInButton) {
 			//login here
@@ -66,7 +67,7 @@ public class LoginController  implements Initializable {
 		}
 	}
 
-	private Account logIn() {
+	private Account logIn() throws NoSuchAlgorithmException {
 		String email = txtUsername.getText();
 		String password = txtPassword.getText();
 		if(email.isEmpty() || password.isEmpty()) {

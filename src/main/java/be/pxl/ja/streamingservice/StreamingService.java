@@ -2,6 +2,7 @@ package be.pxl.ja.streamingservice;
 
 import be.pxl.ja.streamingservice.model.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class StreamingService {
 		return contentList;
 	}
 
-	public Account verifyAndGetAccount(String email, String password) {
+	public Account verifyAndGetAccount(String email, String password) throws NoSuchAlgorithmException {
 		for (Account account : accounts) {
 			if (account.getEmail().equals(email) && account.verifyPassword(password)) {
 				return account;

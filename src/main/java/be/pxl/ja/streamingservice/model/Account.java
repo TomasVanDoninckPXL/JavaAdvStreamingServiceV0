@@ -11,23 +11,9 @@ public class Account {
     private Profile[] profiles;
     private PaymentInfo paymentInfo;
 
-    public Account(String email, String password, StreamingPlan streamingPlan, Profile[] profiles, PaymentInfo paymentInfo) {
-        this.email = email;
-        this.password = password;
-        this.streamingPlan = streamingPlan;
-        this.profiles = profiles;
-        this.paymentInfo = paymentInfo;
-    }
-
     public Account(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    Account(StreamingPlan streamingPlan){
-        this.streamingPlan = streamingPlan;
-        profiles = new Profile[streamingPlan.getNumberOfProfiles()];
-        profiles[0] = new Profile("profile 1");
     }
 
     public Profile getFirstProfile(){
@@ -74,7 +60,7 @@ public class Account {
         this.paymentInfo = paymentInfo;
     }
 
-    public boolean verifyPassword(String password) throws NoSuchAlgorithmException {
+    public boolean verifyPassword(String password) throws NoSuchAlgorithmException{
         return PasswordUtil.isValid(password, this.password);
     }
 }
