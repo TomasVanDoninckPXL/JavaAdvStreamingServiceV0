@@ -1,7 +1,14 @@
 package be.pxl.ja.streamingservice;
 
+import be.pxl.ja.streamingservice.controller.Pages;
 import be.pxl.ja.streamingservice.model.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,29 +1,52 @@
 package be.pxl.ja.streamingservice.model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class CreditCardNumber {
     private static final int LENGTH = 16;
+    private static final int CVC_LENGTH = 3;
+
     private CreditCardType type;
     private String number;
     private String cvc;
 
     public CreditCardNumber(String number, String cvc) {
+        this.number = validateNumberAndRemoveBlanks(number);
+        this.type = validateCardType();
+        this.cvc = validateCvcAndRemoveBlanks(cvc);
+    }
+
+    private CreditCardType validateCardType() {
+        CreditCardType type = getCreditCardType(this.number);
+        if (type == null){
+            throw new IllegalArgumentException("This is not a valid credit card.");
+        }
+        return type;
+    }
+
+    @NotNull
+    private String validateCvcAndRemoveBlanks(String cvc) {
+        cvc = removeBlanks(cvc);
+        if (!isNumeric(cvc) || cvc.length() != CVC_LENGTH){
+            throw new IllegalArgumentException("CVC should be 3 digits");
+        }
+        return cvc;
+    }
+
+    @NotNull
+    private String validateNumberAndRemoveBlanks(String number) {
         number = removeBlanks(number);
         if (!isNumeric(number) || number.length() != LENGTH){
             throw new IllegalArgumentException("Must have " + LENGTH + " digits.");
         }
-        this.number = number;
-        type = getCreditCardType(number);
-        if (type == null){
-            throw new IllegalArgumentException("This is not a valid credit card.");
-        }
-        this.cvc = removeBlanks(cvc);
+        return number;
     }
 
     private CreditCardType getCreditCardType(String number) {
-        if (number.charAt(0) == '5'){
+        if (Integer.parseInt(number.substring(0,1)) == CreditCardType.MASTERCARD.getFirstNumber()){
             return CreditCardType.MASTERCARD;
         }
-        else if (number.charAt(0) == '4'){
+        else if (Integer.parseInt(number.substring(0,1)) == CreditCardType.VISA.getFirstNumber()){
             return CreditCardType.VISA;
         }
         else {
