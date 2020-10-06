@@ -33,16 +33,32 @@ public class PasswordUtil {
 		}else{
 			score += 2;
 		}
-		if (password.contains("0-9")){
+		char[] pwChars = password.toCharArray();
+		boolean upperCase = false, lowerCase = false, digit = false, specialChar = false;
+		for (char a : pwChars){
+			if (!digit && Character.isDigit(a)){
+				digit = true;
+			}
+			else if (!upperCase && Character.isUpperCase(a)){
+				upperCase = true;
+			}
+			else if (!lowerCase && Character.isLowerCase(a)){
+				lowerCase = true;
+			}
+			else if (!specialChar && SPECIAL_CHARACTERS.indexOf(a) >= 0){
+				specialChar = true;
+			}
+		}
+		if (digit){
 			score += 2;
 		}
-		if (password.contains("a-z")){
+		if (lowerCase){
 			score += 2;
 		}
-		if (password.contains("A-Z")){
+		if (upperCase){
 			score += 2;
 		}
-		if (password.contains(SPECIAL_CHARACTERS)){
+		if (specialChar){
 			score += 2;
 		}
 		return score;
